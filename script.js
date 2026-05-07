@@ -56,14 +56,6 @@ form.addEventListener("submit", (event) => {
   formNote.textContent = "Thanks! Your message was saved for the admin panel preview.";
 });
 
-resumeLink.addEventListener("click", () => {
-  if (resumeLink.getAttribute("href") === "Kanwaljot_Singh_CV.pdf") {
-    setTimeout(() => {
-      alert("Place your CV PDF in this folder as Kanwaljot_Singh_CV.pdf to enable the download button.");
-    }, 150);
-  }
-});
-
 themeToggle.addEventListener("click", () => {
   const isLight = document.body.classList.toggle("light-mode");
   themeToggle.setAttribute("aria-label", isLight ? "Switch to dark mode" : "Switch to light mode");
