@@ -435,14 +435,13 @@ body.light-mode .portrait-card {
 }
 
 .portrait {
-  width: 66%;
+  width: 78%;
   aspect-ratio: 1;
   display: grid;
   place-items: center;
-  border-radius: 50%;
+  border-radius: 12px;
   color: var(--accent);
-  background: rgba(255, 255, 255, 0.04);
-  box-shadow: inset 0 0 80px rgba(39, 215, 255, 0.12);
+  background: transparent;
   font-size: clamp(4rem, 9vw, 7rem);
   font-weight: 900;
   overflow: hidden;
@@ -451,8 +450,7 @@ body.light-mode .portrait-card {
 .portrait-photo {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
+  object-fit: contain;
   display: block;
 }
 
