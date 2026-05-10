@@ -25,6 +25,28 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
   });
 });
 
+// Active nav highlight
+const sections = document.querySelectorAll("section[id]");
+const navItems = document.querySelectorAll(".nav-links a");
+
+const setActiveNav = (id) => {
+  navItems.forEach((a) => {
+    const isMatch = a.getAttribute("href") === `#${id}`;
+    a.classList.toggle("active", isMatch);
+  });
+};
+
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) setActiveNav(entry.target.id);
+    });
+  },
+  { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
+);
+
+sections.forEach((s) => sectionObserver.observe(s));
+
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
