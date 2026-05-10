@@ -42,18 +42,18 @@ document.querySelectorAll(".reveal").forEach((element) => observer.observe(eleme
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const formData = new FormData(form);
-  const message = {
-    id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
-    name: formData.get("name").trim(),
-    email: formData.get("email").trim(),
-    message: formData.get("message").trim(),
-    createdAt: new Date().toISOString()
-  };
-  const messages = JSON.parse(localStorage.getItem("portfolio-messages") || "[]");
-  messages.unshift(message);
-  localStorage.setItem("portfolio-messages", JSON.stringify(messages));
+  const name = formData.get("name").trim();
+  const email = formData.get("email").trim();
+  const message = formData.get("message").trim();
+
+  const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+  const gmailUrl = `https://mail.google.com/mail/?view=cm&to=kanwaljotsingh07@gmail.com&su=${subject}&body=${body}`;
+
+  window.open(gmailUrl, "_blank", "noreferrer");
   form.reset();
-  formNote.textContent = "Thanks! Your message was saved for the admin panel preview.";
+  formNote.textContent = "Opening Gmail to send your message...";
+  setTimeout(() => { formNote.textContent = ""; }, 4000);
 });
 
 themeToggle.addEventListener("click", () => {
